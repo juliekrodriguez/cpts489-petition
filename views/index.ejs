@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Petition Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+
+  </head>
+  <body>
+    <header>
+      <!-- Header content goes here - i dont think i need one  -->
+    </header>
+    <main>
+      <section class="petition">
+        <h1>Support Our Cause</h1>
+        <p>Lift the Ban and Let Our Cats Code!</p>
+        <img src="/images/cat.png" alt="cat">
+
+        <p>
+          We, the undersigned, are writing to request the immediate unbanning of
+          the Cats Code account on your platform. Cats Code is a valuable member
+          of our online community, sharing valuable insights and knowledge on
+          various programming topics. However, it has come to our attention that
+          Cats Code has been unjustly banned from your platform. We believe in
+          the importance of free speech and expression on the internet. By
+          banning Cats Code, you are limiting the voices and perspectives that
+          are represented on your platform. We urge you to reconsider your
+          decision and reinstate Cats Code's account on your platform. Doing so
+          will not only benefit the programming community but also uphold the
+          principles of free speech and expression. Thank you for your attention
+          to this matter.
+        </p>
+      </section>
+      <section class="sign-petition">
+        <h2>Sign the Petition</h2>
+        <form id="petition-form">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" required />
+
+          <label for="agree">I agree to sign this petition:</label>
+          <input type="checkbox" id="agree" name="agree" required />
+
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+      <section class="petition-signatures">
+        <h2>Petition Signatures</h2>
+        <table id="signature-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>City</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <footer>
+    </footer>
+    <script>
+      const petitionForm = document.querySelector("#petition-form");
+      const signatureTable = document.querySelector("#signature-table");
+      const signatureRows = signatureTable.querySelector("tbody");
+
+      const signatures = [];
+
+      petitionForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = event.target.elements.name.value;
+        const city = event.target.elements.city.value;
+        const signature = { name, city };
+
+        signatures.push(signature);
+
+        signatureRows.innerHTML = signatures
+          .map(
+            (signature) =>
+              `<tr><td>${signature.name}</td><td>${signature.city}</td></tr>`
+          )
+          .join("");
+      });
+    </script>
+  </body>
+</html>
